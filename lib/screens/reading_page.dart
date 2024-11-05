@@ -60,13 +60,16 @@ class _SurahPageState extends State<SurahPage> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar:    AppBar(leading: ElevatedButton(
-          onPressed: (){
-            setState(() {
-            });
-          },
-          child: const Text('refresh'),
-        ),),
+        appBar:    AppBar(
+        //   leading: ElevatedButton(
+        //   onPressed: (){
+        //     setState(() {
+        //     });
+        //   },
+        //   child: const Text('refresh'),
+        // ),
+          )
+         ,
         body: SafeArea(
           minimum: const EdgeInsets.all(15),
           child: ListView(children: [
@@ -89,7 +92,7 @@ class _SurahPageState extends State<SurahPage> {
                       },
                       text: ' ${quran.getVerse(index, i, verseEndSymbol: false)} ',
                       style: const TextStyle(
-                        fontFamily: 'Kitab',
+                        fontFamily: 'Othmani',
                         fontSize: 25,
                         color: Colors.black87,
                       ),

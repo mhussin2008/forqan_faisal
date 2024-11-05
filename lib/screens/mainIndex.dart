@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:forqan_app/models/surah.dart';
 import 'package:forqan_app/screens/reading_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../generated/assets.dart';
 //import 'package:google_fonts/google_fonts.dart';
@@ -41,17 +42,21 @@ class _MainIndexState extends State<MainIndex> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Transform.rotate(
-          angle: isReverse ? pi : 2 * pi,
-          child: IconButton(
-              icon: const Icon(Icons.sort),
-              onPressed: () {
-                setState(() {
-                  isReverse = !isReverse;
-                });
-              }),
-        ),
+      appBar:
+      AppBar(
+        backgroundColor: Colors.greenAccent,
+        title: surahList.isNotEmpty?
+        const Center(child: Text ('إهداء من الأستاذ فيصل', style: TextStyle(color:  Colors.blue,)))
+            :
+        const SizedBox(width: 40,),
+        actions: [
+          IconButton(onPressed: () async {
+            await _launchPrivacyUrl();
+          }
+              ,tooltip: "Privacy Policy",
+              icon: Icon(Icons.privacy_tip)
+          )
+        ],
       ),
       body: surahList.isEmpty
           ?  Center(child: CircularProgressIndicator())
@@ -87,5 +92,13 @@ class _MainIndexState extends State<MainIndex> {
     );
   }
 
+  Future<void> _launchPrivacyUrl() async {
+    Uri myPrivacyUri=Uri.parse("https://www.freeprivacypolicy.com/live/bc32b9fb-cc58-4ac5-92fd-9557e03da4b6");
+    print('Privacy Policy');
+    if (!await launchUrl(myPrivacyUri)) {
+      throw Exception('Could not launch $myPrivacyUri');
+    }
+
+  }
 
 }

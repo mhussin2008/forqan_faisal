@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forqan_app/screens/SplashScreen.dart';
-import 'package:forqan_app/screens/mainIndex.dart';
+//import 'package:forqan_app/screens/mainIndex.dart';
 
 void main() {
   runApp(const MyApp());
